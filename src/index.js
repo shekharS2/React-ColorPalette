@@ -11,6 +11,7 @@ function OutputColor(props){
         props.choosenColor === "Color not chosen" ? props.choosenColor : ""
       }</p>
     </div>
+
   );
 }
 
@@ -20,7 +21,7 @@ function InputColor(props){
       'background-color' : props.color
     };
     return (
-        <div>
+        <div class = "palette-child output-palette-child">
           <button style={buttonStyle}
             onClick={props.chooseColor}
           >
@@ -34,7 +35,7 @@ function InputPalette(props){
   
   
   return (
-      <div class="flex-container">
+      <div class="palette-container output-palette-child">
         {
           props.colors.map((color) => {
             return (
@@ -55,18 +56,18 @@ function InputPalette(props){
 
 function ColorApp() {
   
-  const [colors] = useState(['Black', 'Red', 'Green', 'Brown', 'Yellow', 'Blue', 'Orange', 'Purple', 'Pink']);
+  const [colors] = useState(['Black', 'Red', 'Green', 'Brown', 'Yellow', 'Blue', 'Orange', 'Purple', 'Pink', 'Lawngreen']);
   let [color, setColor] = useState('Color not chosen');
 
   
   return (
-    <div>
-      <div class="flex-container">
-        <InputPalette
-          colors = {colors}
-          setColor = {(choosenColor) => toggleColor(choosenColor, color, setColor)}
-        />
-      </div>
+    <div class="output-palette-container">
+
+      <InputPalette
+        colors = {colors}
+        setColor = {(choosenColor) => toggleColor(choosenColor, color, setColor)}
+      />
+
       <OutputColor choosenColor = {color}/>
       
     </div>
