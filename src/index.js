@@ -4,9 +4,7 @@ import './index.css';
 
 
 function OutputColor(props){
-  let divStyle = {
-    'background' : props.choosenColor
-  };
+  let divStyle = props.choosenColor == "Color not chosen" ? {'background' : 'white'} : {'background' : props.choosenColor};
   return (
     <div class ="output" style = {divStyle}>
       <p>{
@@ -27,6 +25,7 @@ function InputColor(props){
             onClick={props.chooseColor}
           >
           </button>
+
         </div>
     );
 }
@@ -67,6 +66,9 @@ function ColorApp() {
           colors = {colors}
           setColor = {
             (choosenColor) => {
+              if(choosenColor == color){
+                choosenColor = "Color not chosen";
+              }
               setColor(choosenColor);
               console.log(color);
             }
